@@ -351,6 +351,8 @@ a.nav-link:hover {
     display: flex; /* Pour permettre le centrage */
     justify-content: center; /* Pour centrer horizontalement */
     align-items: center; /* Pour centrer verticalement */
+	width: 350px;
+	height: 350px;
 }
 
 .animal-card img {
@@ -812,6 +814,7 @@ a.nav-link:hover {
     font-style: italic;
     font-size: smaller;
     color: var(--primary-color);
+	text-decoration: none;
 }
 
 .reseaux-sociaux{

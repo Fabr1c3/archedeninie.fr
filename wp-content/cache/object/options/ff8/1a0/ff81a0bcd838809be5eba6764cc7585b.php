@@ -1,1 +1,1 @@
-ߥ^g<?php exit; ?>a:2:{s:7:"content";s:186:"a:3:{s:19:"wp_inactive_widgets";a:5:{i:0;s:7:"block-2";i:1;s:7:"block-3";i:2;s:7:"block-4";i:3;s:7:"block-5";i:4;s:7:"block-6";}s:18:"give-forms-sidebar";a:0:{}s:13:"array_version";i:3;}";s:15:"key_version_all";i:6;}
+7_g<?php exit; ?>a:2:{s:7:"content";s:186:"a:3:{s:19:"wp_inactive_widgets";a:5:{i:0;s:7:"block-2";i:1;s:7:"block-3";i:2;s:7:"block-4";i:3;s:7:"block-5";i:4;s:7:"block-6";}s:18:"give-forms-sidebar";a:0:{}s:13:"array_version";i:3;}";s:15:"key_version_all";i:8;}

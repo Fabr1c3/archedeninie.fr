@@ -54,6 +54,7 @@
 
 
     <p class="text-center text-copyright mb-0 pb-0 mt-2">&copy; Copyright 2024 Arche de Ninie. Tous droits réservés.</p>
+    <p class="text-center text-copyright mb-0 pb-0 mt-2">Site réalisé par <a class="text-copyright mb-0 pb-0 mt-2" href="https://www.linkedin.com/in/vanessa-dhuicque/" target="_blank">Vanessa DHUICQUE</a> <a class="text-copyright mb-0 pb-0 mt-2" href="mailto:contact@cameleonne.fr">contact@cameleonne.fr</a></p>
 </footer>
 <?php wp_footer() ?>
 </body>
