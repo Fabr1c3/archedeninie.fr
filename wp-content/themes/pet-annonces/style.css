@@ -1,0 +1,882 @@
+/*
+Theme Name: L'arche de Ninie
+Author: Vanessa DHUICQUE
+Description: Thème spécifiquement créé pour répondre au besoin de créer un site d'annonces pour une association de sauvegarde des animaux de compagnie abandonnés.
+Requires at least: 6.4
+Tested up to: 6.4
+Requires PHP: 8.2
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: arche
+*/
+
+/*
+    STYLE GÉNÉRAL
+*/
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('assets/fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto-Black';
+    src: url('assets/fonts/Roboto-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: url('assets/fonts/Roboto-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Kids-Zona';
+    src: url('assets/fonts/Kids-Zona.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --primary-color: #F6BA4D;
+    --primary-color-dark: #D4982B;
+    --secondary-color: #FDFBF5;
+
+    --text-color: #0d0d0d;
+
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0 !important;
+}
+
+body > section {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+h1{
+    font-size: 58px;
+}
+
+@media screen and (max-width: 576px) {
+    h1{
+        font-size: 40px;
+    }
+}
+
+h2{
+    font-size: 40px;
+}
+
+@media screen and (max-width: 576px) {
+    h2{
+        font-size: 25px;
+    }
+}
+
+h3{
+    font-size: 20px;
+}
+
+@media screen and (max-width: 576px) {
+    h3{
+        font-size: 16px;
+    }
+}
+
+.text-justify{
+    text-align: justify;
+}
+
+
+a{
+    color: var(--text-color);
+}
+
+.kids-zona{
+    font-family: 'Kids-Zona', sans-serif;
+}
+
+/*
+    BARRE DE NAVIGATION
+*/
+
+.navbar {
+    background-color: white;
+    opacity: 0.7;
+    min-height: 100px;
+}
+
+.custom-logo{
+    margin-left: 80px;
+    height: 80px;
+    width: auto;
+}
+
+@media screen and (max-width: 992px) {
+    .custom-logo{
+        margin-left: 20px;
+    }
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.nav-item {
+    margin-right: 80px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.nav-link, .nav-item{
+    color: #000000;
+    opacity: 1;
+}
+
+a.nav-link:hover {
+    color: var(--primary-color);
+}
+
+/*
+    BANNIÈRE
+ */
+
+.hero-section {
+    background-size: cover; /* Ajuster la taille de l'image pour couvrir la hauteur */
+    height: 600px;
+    background-repeat: no-repeat;
+}
+
+.title-hero-banner span{
+    color: var(--primary-color);
+}
+
+.text-hero-banner{
+    font-size: 20px;
+    padding-top: 20px;
+}
+
+.btn-arche {
+    border: solid 1 px var(--primary-color);
+    background-color: var(--primary-color);
+    border-radius: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    margin-left: 10px;
+    white-space: nowrap;
+    font-weight: 500;
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
+}
+
+@media screen and (max-width: 992px) {
+
+    .title-hero-banner{
+        padding-top: 60px;
+    }
+
+    .text-hero-banner{
+        padding-top: 0;
+        font-size: 16px;
+    }
+
+    .btn-arche {
+        margin: 0 auto;
+        max-width: 100%;
+        white-space: pre-wrap;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .title-hero-banner{
+        font-size: 40px;
+    }
+}
+
+/*
+    SERVICE CARDS
+ */
+
+.icon-service img{
+    height: auto;
+    width: 75px;
+    margin-left: 2rem;
+}
+
+.card-service{
+    max-width: 450px;
+}
+
+.card-body-service{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    min-height: 150px;
+}
+
+.card-service-title{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.card-service-text{
+    text-align: center;
+    text-justify: distribute;
+    font-size: 18px;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #FDFBF5;
+    transition: transform 0.2s ease-in-out;
+}
+
+/*
+    CARTES DE STATISTIQUES
+ */
+
+.statistique{
+    background-color:var(--secondary-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 200px;
+    position: relative;
+    z-index: -100;
+    padding:2rem;
+    margin-top : -4rem;
+}
+
+.stats-number{
+    font-size: 3rem;
+    font-family: Roboto-Black, serif;
+    font-weight: 900;
+}
+
+.stats-text{
+    font-size: 1.2rem;
+}
+
+@media screen and (max-width: 768px) {
+    .statistique{
+        z-index: 0;
+    }
+}
+
+/*
+    PROCEDURE CARDS
+ */
+
+.procedure{
+    max-width: 100%;
+    background-color: var(--secondary-color);
+}
+
+.icon-procedure img{
+    height: auto;
+    width: 75px;
+}
+
+/*
+    CARTES D'ANIMAUX
+ */
+
+.adopt-pet, .actualites{
+    padding: 0 2rem;
+}
+
+.container-adoption{
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top{
+    width: 300px;
+    height: 200px;
+    object-fit: contain;
+}
+
+.card-body{
+    background-color: var(--secondary-color);
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.card-body i {
+    font-size: 1rem;
+}
+.name-pet{
+    /*color:var(--primary-color);*/
+    font-family: 'Kids-Zona', serif;
+    font-size: 32px;
+    display: inline-block;
+
+}
+
+.card-sex{
+    color:var(--primary-color);
+    font-size: 2rem !important;
+
+}
+
+.animal-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #FDFBF5;
+    transition: transform 0.2s ease-in-out;
+    overflow: hidden;
+    display: flex; /* Pour permettre le centrage */
+    justify-content: center; /* Pour centrer horizontalement */
+    align-items: center; /* Pour centrer verticalement */
+}
+
+.animal-card img {
+    max-width: 100%; /* Pour assurer la responsivité */
+    max-height: 100%; /* Pour assurer la responsivité */
+    object-fit: contain;
+    object-position: center; /* Pour centrer horizontalement */
+}
+
+.animal-card:hover {
+    transform: translateY(-5px);
+}
+
+/**
+    SOUTENIR CARDS
+ */
+
+
+.participation-card {
+    transition: all 0.3s ease;
+    position: relative;
+    height: 300px; /* Initial height */
+    background-color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.participation-card:hover {
+    padding-bottom: 150px; /* Height on hover */
+}
+
+.participation-arrow-down {
+    display: none;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.participation-card:hover .participation-arrow-down {
+    display: block;
+    opacity: 1;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Désactiver le hover lorsque la carte est ouverte */
+.participation-card.open:hover {
+    padding-bottom: 0; /* Désactiver le padding du hover */
+}
+
+.participation-card.open .participation-arrow-down {
+    display: none; /* Masquer la flèche lorsque la carte est ouverte */
+}
+
+/**
+    SECTION AVANTAGES
+ */
+
+.avantage-section {
+    background-size: contain;
+    min-height: 80vh;
+    background-position: left;
+    background-repeat: no-repeat;
+    margin-top: -300px;
+    padding-top: 300px;
+    padding-bottom: 2rem;
+}
+
+.avantage-content {
+    min-height: 50%;
+    padding: 50px;
+    margin: 2rem auto;
+    width: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.avantage-content h2 {
+    margin: 2rem 3rem 5rem 3rem;
+}
+
+.avantage {
+    display: flex;
+    align-items: start;
+    margin-bottom: 2rem;
+    margin-left: 3rem;
+}
+
+.avantage .icon {
+    margin-right: 15px;
+}
+
+.avantage .icon img {
+    width: 50px;
+    height: 50px;
+}
+
+
+@media (max-width: 992px) {
+    .avantage-content {
+        padding: 0;
+        width: 100%;
+        background-color: var(--secondary-color);
+        box-shadow: none;
+    }
+
+    .avantage-section {
+        background-image: none !important;
+        min-height: 80vh;
+        margin-top: 0;
+        padding-top: 0;
+    }
+}
+
+/**
+    SECTION COMMENT NOUS AIDER PAGE A PROPOS
+ */
+
+.nous-aider-section {
+    background-size: cover;
+    background-position: center;
+    min-height: 80vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    padding: 2rem;
+}
+
+.nous-aider-content {
+    min-height: 50%;
+    padding: 50px;
+    margin: 2rem auto;
+    width: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nous-aider-content h2 {
+    margin: 2rem 3rem 5rem 3rem;
+}
+
+.nous-aider {
+    display: flex;
+    align-items: start;
+    margin-bottom: 2rem;
+    margin-left: 3rem;
+}
+
+.nous-aider .icon {
+    margin-right: 15px;
+}
+
+.nous-aider .icon img {
+    width: 50px;
+    height: auto;
+}
+
+@media (max-width: 992px) {
+    .nous-aider-content {
+        padding: 20px;
+        width: 100%;
+        background-color: var(--secondary-color);
+    }
+
+    .nous-aider-section {
+        background-image: none !important;
+        min-height: 80vh;
+        margin-top: 0;
+        padding-top: 0;
+    }
+}
+/**
+    PAGE ANNONCES
+ */
+
+.img-annonce{
+    max-width: 500px;
+    max-height: 500px;
+    object-fit: contain;
+}
+
+/**
+    SECTION COMMENT NOUS AIDER PAGE A PROPOS
+ */
+
+.procedure-adoption-section {
+    background-size: cover;
+    background-position: center;
+    min-height: 80vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    padding: 2rem;
+}
+
+.procedure-adoption-content {
+    min-height: 50%;
+    padding: 50px;
+    margin: 2rem auto;
+    width: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.procedure-adoption-content h2 {
+    margin: 2rem 3rem 5rem 3rem;
+}
+
+.procedure-adoption {
+    display: flex;
+    align-items: start;
+    margin-bottom: 2rem;
+    margin-left: 3rem;
+}
+
+.procedure-adoption .icon {
+    margin-right: 15px;
+}
+
+.procedure-adoption .icon img {
+    width: 50px;
+    height: auto;
+}
+
+@media (max-width: 992px) {
+    .procedure-adoption-content {
+        padding: 20px;
+        width: 100%;
+        background-color: var(--secondary-color);
+    }
+
+    .procedure-adoption-section {
+        background-image: none !important;
+        min-height: 80vh;
+        margin-top: 0;
+        padding-top: 0;
+    }
+}
+
+/**
+    PAGE ACTUALITES
+ */
+
+
+.img-actus{
+    object-fit: contain;
+}
+
+/**
+    ACTUALITES CARDS
+ */
+
+.custom-card-actualite{
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    max-width: 350px;
+}
+
+.actualite-card-img-top {
+    border-radius: 1rem;
+    width: 80%;
+    max-height: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+}
+
+.actualite-card-text{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/**
+    CARROUSEL PARTENAIRES
+ */
+
+.partenaire{
+    background-color: var(--secondary-color);
+}
+
+.flex-control-paging li a{
+    background-color: var(--primary-color)!important;
+
+}
+
+.flex-control-paging li a.flex-active{
+    background-color: var(--primary-color-dark)!important;
+}
+
+.metaslider .flexslider .flex-direction-nav li a{
+    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgd2lkdGg9IjU3cHgiIGhlaWdodD0iMjdweCIgc3R5bGU9InNoYXBlLXJlbmRlcmluZzpnZW9tZXRyaWNQcmVjaXNpb247IHRleHQtcmVuZGVyaW5nOmdlb21ldHJpY1ByZWNpc2lvbjsgaW1hZ2UtcmVuZGVyaW5nOm9wdGltaXplUXVhbGl0eTsgZmlsbC1ydWxlOmV2ZW5vZGQ7IGNsaXAtcnVsZTpldmVub2RkIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjEiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gMjQuNSwxOS41IEMgMjIuNSwyMC44MzMzIDIwLjgzMzMsMjIuNSAxOS41LDI0LjVDIDE1LjE1MTYsMjUuNzUzNyAxMC44MTgzLDI1Ljc1MzcgNi41LDI0LjVDIDUuMTY2NjcsMjIuNSAzLjUsMjAuODMzMyAxLjUsMTkuNUMgLTEuODE1NjUsNS4zMTAyNCAzLjg1MTAxLC0wLjg1NjQyOCAxOC41LDFDIDIzLjgyMzYsMy40Nzk1OCAyNi4xNTY5LDcuNjQ2MjQgMjUuNSwxMy41QyAyNS40OTU0LDE1LjY5NjUgMjUuMTYyLDE3LjY5NjUgMjQuNSwxOS41IFogTSAxMS41LDEzLjUgQyAxMi41LDE0LjgzMzMgMTMuNSwxNi4xNjY3IDE0LjUsMTcuNUMgMTQuNTY1NCwxNy45MzgyIDE0LjM5ODgsMTguMjcxNiAxNCwxOC41QyAxMi4xNjY3LDE2LjY2NjcgMTAuMzMzMywxNC44MzMzIDguNSwxM0MgOS44MzMzMywxMS42NjY3IDExLjE2NjcsMTAuMzMzMyAxMi41LDlDIDEzLjMzMTcsOC4zMTIzMiAxMy45OTg0LDguNDc4OTkgMTQuNSw5LjVDIDEzLjE3MzgsMTAuNjQyMiAxMi4xNzM4LDExLjk3NTUgMTEuNSwxMy41IFoiLz48L2c+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjEiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gNTQuNSwxOS41IEMgNTIuNSwyMC44MzMzIDUwLjgzMzMsMjIuNSA0OS41LDI0LjVDIDQ1LjE1MTYsMjUuNzUzNyA0MC44MTgzLDI1Ljc1MzcgMzYuNSwyNC41QyAzNS4xNjY3LDIyLjUgMzMuNSwyMC44MzMzIDMxLjUsMTkuNUMgMjguMTg0Myw1LjMxMDI0IDMzLjg1MSwtMC44NTY0MjggNDguNSwxQyA1My44MjM2LDMuNDc5NTggNTYuMTU2OSw3LjY0NjI0IDU1LjUsMTMuNUMgNTUuNDk1NCwxNS42OTY1IDU1LjE2MiwxNy42OTY1IDU0LjUsMTkuNSBaIE0gNDEuNSw4LjUgQyA0My44ODYzLDkuMzczMzEgNDUuODg2MywxMC44NzMzIDQ3LjUsMTNDIDQ1LjY2NjcsMTQuODMzMyA0My44MzMzLDE2LjY2NjcgNDIsMTguNUMgNDIuMjQsMTYuNTMzNSA0My4wNzM0LDE0LjcwMDIgNDQuNSwxM0MgNDIuOTAwMywxMS44NzY3IDQxLjkwMDMsMTAuMzc2NyA0MS41LDguNSBaIi8+PC9nPgo8Zz48cGF0aCBzdHlsZT0ib3BhY2l0eTowLjI0NyIgZmlsbD0iI0Y2QkE0RCIgZD0iTSAxMS41LDEzLjUgQyAxNC4zMzIxLDEzLjk0MTkgMTUuMzMyMSwxNS4yNzUyIDE0LjUsMTcuNUMgMTMuNSwxNi4xNjY3IDEyLjUsMTQuODMzMyAxMS41LDEzLjUgWiIvPjwvZz4KPGc+PHBhdGggc3R5bGU9Im9wYWNpdHk6MC4wMDQiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gMS41LDE5LjUgQyAzLjUsMjAuODMzMyA1LjE2NjY3LDIyLjUgNi41LDI0LjVDIDMuODMzMzMsMjMuODMzMyAyLjE2NjY3LDIyLjE2NjcgMS41LDE5LjUgWiIvPjwvZz4KPGc+PHBhdGggc3R5bGU9Im9wYWNpdHk6MC4wMDQiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gMzEuNSwxOS41IEMgMzMuNSwyMC44MzMzIDM1LjE2NjcsMjIuNSAzNi41LDI0LjVDIDMzLjgzMzMsMjMuODMzMyAzMi4xNjY3LDIyLjE2NjcgMzEuNSwxOS41IFoiLz48L2c+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjAuMDIiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gMjQuNSwxOS41IEMgMjMuODMzMywyMi4xNjY3IDIyLjE2NjcsMjMuODMzMyAxOS41LDI0LjVDIDIwLjgzMzMsMjIuNSAyMi41LDIwLjgzMzMgMjQuNSwxOS41IFoiLz48L2c+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjAuMDIiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gNTQuNSwxOS41IEMgNTMuODMzMywyMi4xNjY3IDUyLjE2NjcsMjMuODMzMyA0OS41LDI0LjVDIDUwLjgzMzMsMjIuNSA1Mi41LDIwLjgzMzMgNTQuNSwxOS41IFoiLz48L2c+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjAuMDg5IiBmaWxsPSIjRjZCQTREIiBkPSJNIDYuNSwyNC41IEMgMTAuODE4MywyNS43NTM3IDE1LjE1MTYsMjUuNzUzNyAxOS41LDI0LjVDIDE5LjE2NjcsMjUuMTY2NyAxOC44MzMzLDI1LjgzMzMgMTguNSwyNi41QyAxNC44MzMzLDI2LjUgMTEuMTY2NywyNi41IDcuNSwyNi41QyA3LjE2NjY3LDI1LjgzMzMgNi44MzMzMywyNS4xNjY3IDYuNSwyNC41IFoiLz48L2c+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjAuMDg5IiBmaWxsPSIjRjZCQTREIiBkPSJNIDM2LjUsMjQuNSBDIDQwLjgxODMsMjUuNzUzNyA0NS4xNTE2LDI1Ljc1MzcgNDkuNSwyNC41QyA0OS4xNjY3LDI1LjE2NjcgNDguODMzMywyNS44MzMzIDQ4LjUsMjYuNUMgNDQuODMzMywyNi41IDQxLjE2NjcsMjYuNSAzNy41LDI2LjVDIDM3LjE2NjcsMjUuODMzMyAzNi44MzMzLDI1LjE2NjcgMzYuNSwyNC41IFoiLz48L2c+Cjwvc3ZnPgo=") !important;
+}
+.metaslider-responsive.no-text .rslides_nav{
+    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgd2lkdGg9IjU3cHgiIGhlaWdodD0iMjdweCIgc3R5bGU9InNoYXBlLXJlbmRlcmluZzpnZW9tZXRyaWNQcmVjaXNpb247IHRleHQtcmVuZGVyaW5nOmdlb21ldHJpY1ByZWNpc2lvbjsgaW1hZ2UtcmVuZGVyaW5nOm9wdGltaXplUXVhbGl0eTsgZmlsbC1ydWxlOmV2ZW5vZGQ7IGNsaXAtcnVsZTpldmVub2RkIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjEiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gMjQuNSwxOS41IEMgMjIuNSwyMC44MzMzIDIwLjgzMzMsMjIuNSAxOS41LDI0LjVDIDE1LjE1MTYsMjUuNzUzNyAxMC44MTgzLDI1Ljc1MzcgNi41LDI0LjVDIDUuMTY2NjcsMjIuNSAzLjUsMjAuODMzMyAxLjUsMTkuNUMgLTEuODE1NjUsNS4zMTAyNCAzLjg1MTAxLC0wLjg1NjQyOCAxOC41LDFDIDIzLjgyMzYsMy40Nzk1OCAyNi4xNTY5LDcuNjQ2MjQgMjUuNSwxMy41QyAyNS40OTU0LDE1LjY5NjUgMjUuMTYyLDE3LjY5NjUgMjQuNSwxOS41IFogTSAxMS41LDEzLjUgQyAxMi41LDE0LjgzMzMgMTMuNSwxNi4xNjY3IDE0LjUsMTcuNUMgMTQuNTY1NCwxNy45MzgyIDE0LjM5ODgsMTguMjcxNiAxNCwxOC41QyAxMi4xNjY3LDE2LjY2NjcgMTAuMzMzMywxNC44MzMzIDguNSwxM0MgOS44MzMzMywxMS42NjY3IDExLjE2NjcsMTAuMzMzMyAxMi41LDlDIDEzLjMzMTcsOC4zMTIzMiAxMy45OTg0LDguNDc4OTkgMTQuNSw5LjVDIDEzLjE3MzgsMTAuNjQyMiAxMi4xNzM4LDExLjk3NTUgMTEuNSwxMy41IFoiLz48L2c+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjEiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gNTQuNSwxOS41IEMgNTIuNSwyMC44MzMzIDUwLjgzMzMsMjIuNSA0OS41LDI0LjVDIDQ1LjE1MTYsMjUuNzUzNyA0MC44MTgzLDI1Ljc1MzcgMzYuNSwyNC41QyAzNS4xNjY3LDIyLjUgMzMuNSwyMC44MzMzIDMxLjUsMTkuNUMgMjguMTg0Myw1LjMxMDI0IDMzLjg1MSwtMC44NTY0MjggNDguNSwxQyA1My44MjM2LDMuNDc5NTggNTYuMTU2OSw3LjY0NjI0IDU1LjUsMTMuNUMgNTUuNDk1NCwxNS42OTY1IDU1LjE2MiwxNy42OTY1IDU0LjUsMTkuNSBaIE0gNDEuNSw4LjUgQyA0My44ODYzLDkuMzczMzEgNDUuODg2MywxMC44NzMzIDQ3LjUsMTNDIDQ1LjY2NjcsMTQuODMzMyA0My44MzMzLDE2LjY2NjcgNDIsMTguNUMgNDIuMjQsMTYuNTMzNSA0My4wNzM0LDE0LjcwMDIgNDQuNSwxM0MgNDIuOTAwMywxMS44NzY3IDQxLjkwMDMsMTAuMzc2NyA0MS41LDguNSBaIi8+PC9nPgo8Zz48cGF0aCBzdHlsZT0ib3BhY2l0eTowLjI0NyIgZmlsbD0iI0Y2QkE0RCIgZD0iTSAxMS41LDEzLjUgQyAxNC4zMzIxLDEzLjk0MTkgMTUuMzMyMSwxNS4yNzUyIDE0LjUsMTcuNUMgMTMuNSwxNi4xNjY3IDEyLjUsMTQuODMzMyAxMS41LDEzLjUgWiIvPjwvZz4KPGc+PHBhdGggc3R5bGU9Im9wYWNpdHk6MC4wMDQiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gMS41LDE5LjUgQyAzLjUsMjAuODMzMyA1LjE2NjY3LDIyLjUgNi41LDI0LjVDIDMuODMzMzMsMjMuODMzMyAyLjE2NjY3LDIyLjE2NjcgMS41LDE5LjUgWiIvPjwvZz4KPGc+PHBhdGggc3R5bGU9Im9wYWNpdHk6MC4wMDQiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gMzEuNSwxOS41IEMgMzMuNSwyMC44MzMzIDM1LjE2NjcsMjIuNSAzNi41LDI0LjVDIDMzLjgzMzMsMjMuODMzMyAzMi4xNjY3LDIyLjE2NjcgMzEuNSwxOS41IFoiLz48L2c+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjAuMDIiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gMjQuNSwxOS41IEMgMjMuODMzMywyMi4xNjY3IDIyLjE2NjcsMjMuODMzMyAxOS41LDI0LjVDIDIwLjgzMzMsMjIuNSAyMi41LDIwLjgzMzMgMjQuNSwxOS41IFoiLz48L2c+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjAuMDIiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gNTQuNSwxOS41IEMgNTMuODMzMywyMi4xNjY3IDUyLjE2NjcsMjMuODMzMyA0OS41LDI0LjVDIDUwLjgzMzMsMjIuNSA1Mi41LDIwLjgzMzMgNTQuNSwxOS41IFoiLz48L2c+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjAuMDg5IiBmaWxsPSIjRjZCQTREIiBkPSJNIDYuNSwyNC41IEMgMTAuODE4MywyNS43NTM3IDE1LjE1MTYsMjUuNzUzNyAxOS41LDI0LjVDIDE5LjE2NjcsMjUuMTY2NyAxOC44MzMzLDI1LjgzMzMgMTguNSwyNi41QyAxNC44MzMzLDI2LjUgMTEuMTY2NywyNi41IDcuNSwyNi41QyA3LjE2NjY3LDI1LjgzMzMgNi44MzMzMywyNS4xNjY3IDYuNSwyNC41IFoiLz48L2c+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjAuMDg5IiBmaWxsPSIjRjZCQTREIiBkPSJNIDM2LjUsMjQuNSBDIDQwLjgxODMsMjUuNzUzNyA0NS4xNTE2LDI1Ljc1MzcgNDkuNSwyNC41QyA0OS4xNjY3LDI1LjE2NjcgNDguODMzMywyNS44MzMzIDQ4LjUsMjYuNUMgNDQuODMzMywyNi41IDQxLjE2NjcsMjYuNSAzNy41LDI2LjVDIDM3LjE2NjcsMjUuODMzMyAzNi44MzMzLDI1LjE2NjcgMzYuNSwyNC41IFoiLz48L2c+Cjwvc3ZnPgo=") !important;
+}
+.metaslider-flex.ms-theme-default .flex-next:focus {
+    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgd2lkdGg9IjU3cHgiIGhlaWdodD0iMjdweCIgc3R5bGU9InNoYXBlLXJlbmRlcmluZzpnZW9tZXRyaWNQcmVjaXNpb247IHRleHQtcmVuZGVyaW5nOmdlb21ldHJpY1ByZWNpc2lvbjsgaW1hZ2UtcmVuZGVyaW5nOm9wdGltaXplUXVhbGl0eTsgZmlsbC1ydWxlOmV2ZW5vZGQ7IGNsaXAtcnVsZTpldmVub2RkIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjEiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gMjQuNSwxOS41IEMgMjIuNSwyMC44MzMzIDIwLjgzMzMsMjIuNSAxOS41LDI0LjVDIDE1LjE1MTYsMjUuNzUzNyAxMC44MTgzLDI1Ljc1MzcgNi41LDI0LjVDIDUuMTY2NjcsMjIuNSAzLjUsMjAuODMzMyAxLjUsMTkuNUMgLTEuODE1NjUsNS4zMTAyNCAzLjg1MTAxLC0wLjg1NjQyOCAxOC41LDFDIDIzLjgyMzYsMy40Nzk1OCAyNi4xNTY5LDcuNjQ2MjQgMjUuNSwxMy41QyAyNS40OTU0LDE1LjY5NjUgMjUuMTYyLDE3LjY5NjUgMjQuNSwxOS41IFogTSAxMS41LDEzLjUgQyAxMi41LDE0LjgzMzMgMTMuNSwxNi4xNjY3IDE0LjUsMTcuNUMgMTQuNTY1NCwxNy45MzgyIDE0LjM5ODgsMTguMjcxNiAxNCwxOC41QyAxMi4xNjY3LDE2LjY2NjcgMTAuMzMzMywxNC44MzMzIDguNSwxM0MgOS44MzMzMywxMS42NjY3IDExLjE2NjcsMTAuMzMzMyAxMi41LDlDIDEzLjMzMTcsOC4zMTIzMiAxMy45OTg0LDguNDc4OTkgMTQuNSw5LjVDIDEzLjE3MzgsMTAuNjQyMiAxMi4xNzM4LDExLjk3NTUgMTEuNSwxMy41IFoiLz48L2c+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjEiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gNTQuNSwxOS41IEMgNTIuNSwyMC44MzMzIDUwLjgzMzMsMjIuNSA0OS41LDI0LjVDIDQ1LjE1MTYsMjUuNzUzNyA0MC44MTgzLDI1Ljc1MzcgMzYuNSwyNC41QyAzNS4xNjY3LDIyLjUgMzMuNSwyMC44MzMzIDMxLjUsMTkuNUMgMjguMTg0Myw1LjMxMDI0IDMzLjg1MSwtMC44NTY0MjggNDguNSwxQyA1My44MjM2LDMuNDc5NTggNTYuMTU2OSw3LjY0NjI0IDU1LjUsMTMuNUMgNTUuNDk1NCwxNS42OTY1IDU1LjE2MiwxNy42OTY1IDU0LjUsMTkuNSBaIE0gNDEuNSw4LjUgQyA0My44ODYzLDkuMzczMzEgNDUuODg2MywxMC44NzMzIDQ3LjUsMTNDIDQ1LjY2NjcsMTQuODMzMyA0My44MzMzLDE2LjY2NjcgNDIsMTguNUMgNDIuMjQsMTYuNTMzNSA0My4wNzM0LDE0LjcwMDIgNDQuNSwxM0MgNDIuOTAwMywxMS44NzY3IDQxLjkwMDMsMTAuMzc2NyA0MS41LDguNSBaIi8+PC9nPgo8Zz48cGF0aCBzdHlsZT0ib3BhY2l0eTowLjI0NyIgZmlsbD0iI0Y2QkE0RCIgZD0iTSAxMS41LDEzLjUgQyAxNC4zMzIxLDEzLjk0MTkgMTUuMzMyMSwxNS4yNzUyIDE0LjUsMTcuNUMgMTMuNSwxNi4xNjY3IDEyLjUsMTQuODMzMyAxMS41LDEzLjUgWiIvPjwvZz4KPGc+PHBhdGggc3R5bGU9Im9wYWNpdHk6MC4wMDQiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gMS41LDE5LjUgQyAzLjUsMjAuODMzMyA1LjE2NjY3LDIyLjUgNi41LDI0LjVDIDMuODMzMzMsMjMuODMzMyAyLjE2NjY3LDIyLjE2NjcgMS41LDE5LjUgWiIvPjwvZz4KPGc+PHBhdGggc3R5bGU9Im9wYWNpdHk6MC4wMDQiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gMzEuNSwxOS41IEMgMzMuNSwyMC44MzMzIDM1LjE2NjcsMjIuNSAzNi41LDI0LjVDIDMzLjgzMzMsMjMuODMzMyAzMi4xNjY3LDIyLjE2NjcgMzEuNSwxOS41IFoiLz48L2c+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjAuMDIiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gMjQuNSwxOS41IEMgMjMuODMzMywyMi4xNjY3IDIyLjE2NjcsMjMuODMzMyAxOS41LDI0LjVDIDIwLjgzMzMsMjIuNSAyMi41LDIwLjgzMzMgMjQuNSwxOS41IFoiLz48L2c+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjAuMDIiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gNTQuNSwxOS41IEMgNTMuODMzMywyMi4xNjY3IDUyLjE2NjcsMjMuODMzMyA0OS41LDI0LjVDIDUwLjgzMzMsMjIuNSA1Mi41LDIwLjgzMzMgNTQuNSwxOS41IFoiLz48L2c+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjAuMDg5IiBmaWxsPSIjRjZCQTREIiBkPSJNIDYuNSwyNC41IEMgMTAuODE4MywyNS43NTM3IDE1LjE1MTYsMjUuNzUzNyAxOS41LDI0LjVDIDE5LjE2NjcsMjUuMTY2NyAxOC44MzMzLDI1LjgzMzMgMTguNSwyNi41QyAxNC44MzMzLDI2LjUgMTEuMTY2NywyNi41IDcuNSwyNi41QyA3LjE2NjY3LDI1LjgzMzMgNi44MzMzMywyNS4xNjY3IDYuNSwyNC41IFoiLz48L2c+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjAuMDg5IiBmaWxsPSIjRjZCQTREIiBkPSJNIDM2LjUsMjQuNSBDIDQwLjgxODMsMjUuNzUzNyA0NS4xNTE2LDI1Ljc1MzcgNDkuNSwyNC41QyA0OS4xNjY3LDI1LjE2NjcgNDguODMzMywyNS44MzMzIDQ4LjUsMjYuNUMgNDQuODMzMywyNi41IDQxLjE2NjcsMjYuNSAzNy41LDI2LjVDIDM3LjE2NjcsMjUuODMzMyAzNi44MzMzLDI1LjE2NjcgMzYuNSwyNC41IFoiLz48L2c+Cjwvc3ZnPgo=") !important;
+}
+.metaslider-flex.ms-theme-default .flex-prev:focus {
+    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgd2lkdGg9IjU3cHgiIGhlaWdodD0iMjdweCIgc3R5bGU9InNoYXBlLXJlbmRlcmluZzpnZW9tZXRyaWNQcmVjaXNpb247IHRleHQtcmVuZGVyaW5nOmdlb21ldHJpY1ByZWNpc2lvbjsgaW1hZ2UtcmVuZGVyaW5nOm9wdGltaXplUXVhbGl0eTsgZmlsbC1ydWxlOmV2ZW5vZGQ7IGNsaXAtcnVsZTpldmVub2RkIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjEiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gMjQuNSwxOS41IEMgMjIuNSwyMC44MzMzIDIwLjgzMzMsMjIuNSAxOS41LDI0LjVDIDE1LjE1MTYsMjUuNzUzNyAxMC44MTgzLDI1Ljc1MzcgNi41LDI0LjVDIDUuMTY2NjcsMjIuNSAzLjUsMjAuODMzMyAxLjUsMTkuNUMgLTEuODE1NjUsNS4zMTAyNCAzLjg1MTAxLC0wLjg1NjQyOCAxOC41LDFDIDIzLjgyMzYsMy40Nzk1OCAyNi4xNTY5LDcuNjQ2MjQgMjUuNSwxMy41QyAyNS40OTU0LDE1LjY5NjUgMjUuMTYyLDE3LjY5NjUgMjQuNSwxOS41IFogTSAxMS41LDEzLjUgQyAxMi41LDE0LjgzMzMgMTMuNSwxNi4xNjY3IDE0LjUsMTcuNUMgMTQuNTY1NCwxNy45MzgyIDE0LjM5ODgsMTguMjcxNiAxNCwxOC41QyAxMi4xNjY3LDE2LjY2NjcgMTAuMzMzMywxNC44MzMzIDguNSwxM0MgOS44MzMzMywxMS42NjY3IDExLjE2NjcsMTAuMzMzMyAxMi41LDlDIDEzLjMzMTcsOC4zMTIzMiAxMy45OTg0LDguNDc4OTkgMTQuNSw5LjVDIDEzLjE3MzgsMTAuNjQyMiAxMi4xNzM4LDExLjk3NTUgMTEuNSwxMy41IFoiLz48L2c+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjEiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gNTQuNSwxOS41IEMgNTIuNSwyMC44MzMzIDUwLjgzMzMsMjIuNSA0OS41LDI0LjVDIDQ1LjE1MTYsMjUuNzUzNyA0MC44MTgzLDI1Ljc1MzcgMzYuNSwyNC41QyAzNS4xNjY3LDIyLjUgMzMuNSwyMC44MzMzIDMxLjUsMTkuNUMgMjguMTg0Myw1LjMxMDI0IDMzLjg1MSwtMC44NTY0MjggNDguNSwxQyA1My44MjM2LDMuNDc5NTggNTYuMTU2OSw3LjY0NjI0IDU1LjUsMTMuNUMgNTUuNDk1NCwxNS42OTY1IDU1LjE2MiwxNy42OTY1IDU0LjUsMTkuNSBaIE0gNDEuNSw4LjUgQyA0My44ODYzLDkuMzczMzEgNDUuODg2MywxMC44NzMzIDQ3LjUsMTNDIDQ1LjY2NjcsMTQuODMzMyA0My44MzMzLDE2LjY2NjcgNDIsMTguNUMgNDIuMjQsMTYuNTMzNSA0My4wNzM0LDE0LjcwMDIgNDQuNSwxM0MgNDIuOTAwMywxMS44NzY3IDQxLjkwMDMsMTAuMzc2NyA0MS41LDguNSBaIi8+PC9nPgo8Zz48cGF0aCBzdHlsZT0ib3BhY2l0eTowLjI0NyIgZmlsbD0iI0Y2QkE0RCIgZD0iTSAxMS41LDEzLjUgQyAxNC4zMzIxLDEzLjk0MTkgMTUuMzMyMSwxNS4yNzUyIDE0LjUsMTcuNUMgMTMuNSwxNi4xNjY3IDEyLjUsMTQuODMzMyAxMS41LDEzLjUgWiIvPjwvZz4KPGc+PHBhdGggc3R5bGU9Im9wYWNpdHk6MC4wMDQiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gMS41LDE5LjUgQyAzLjUsMjAuODMzMyA1LjE2NjY3LDIyLjUgNi41LDI0LjVDIDMuODMzMzMsMjMuODMzMyAyLjE2NjY3LDIyLjE2NjcgMS41LDE5LjUgWiIvPjwvZz4KPGc+PHBhdGggc3R5bGU9Im9wYWNpdHk6MC4wMDQiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gMzEuNSwxOS41IEMgMzMuNSwyMC44MzMzIDM1LjE2NjcsMjIuNSAzNi41LDI0LjVDIDMzLjgzMzMsMjMuODMzMyAzMi4xNjY3LDIyLjE2NjcgMzEuNSwxOS41IFoiLz48L2c+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjAuMDIiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gMjQuNSwxOS41IEMgMjMuODMzMywyMi4xNjY3IDIyLjE2NjcsMjMuODMzMyAxOS41LDI0LjVDIDIwLjgzMzMsMjIuNSAyMi41LDIwLjgzMzMgMjQuNSwxOS41IFoiLz48L2c+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjAuMDIiIGZpbGw9IiNGNkJBNEQiIGQ9Ik0gNTQuNSwxOS41IEMgNTMuODMzMywyMi4xNjY3IDUyLjE2NjcsMjMuODMzMyA0OS41LDI0LjVDIDUwLjgzMzMsMjIuNSA1Mi41LDIwLjgzMzMgNTQuNSwxOS41IFoiLz48L2c+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjAuMDg5IiBmaWxsPSIjRjZCQTREIiBkPSJNIDYuNSwyNC41IEMgMTAuODE4MywyNS43NTM3IDE1LjE1MTYsMjUuNzUzNyAxOS41LDI0LjVDIDE5LjE2NjcsMjUuMTY2NyAxOC44MzMzLDI1LjgzMzMgMTguNSwyNi41QyAxNC44MzMzLDI2LjUgMTEuMTY2NywyNi41IDcuNSwyNi41QyA3LjE2NjY3LDI1LjgzMzMgNi44MzMzMywyNS4xNjY3IDYuNSwyNC41IFoiLz48L2c+CjxnPjxwYXRoIHN0eWxlPSJvcGFjaXR5OjAuMDg5IiBmaWxsPSIjRjZCQTREIiBkPSJNIDM2LjUsMjQuNSBDIDQwLjgxODMsMjUuNzUzNyA0NS4xNTE2LDI1Ljc1MzcgNDkuNSwyNC41QyA0OS4xNjY3LDI1LjE2NjcgNDguODMzMywyNS44MzMzIDQ4LjUsMjYuNUMgNDQuODMzMywyNi41IDQxLjE2NjcsMjYuNSAzNy41LDI2LjVDIDM3LjE2NjcsMjUuODMzMyAzNi44MzMzLDI1LjE2NjcgMzYuNSwyNC41IFoiLz48L2c+Cjwvc3ZnPgo=") !important;
+}
+
+/**
+ * BOUTON "Je donne"
+ */
+
+#donate-container {
+    font-family: 'Arial', sans-serif;
+    display: inline-block;
+    position: fixed;
+    opacity: 0.8;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+#donate-container:hover {
+    opacity: 1;
+}
+
+.donate-button {
+    background-color: #f6ba4d;
+    /*Jaunedorépourleboutonprincipal*/color: #000;
+    border: none;
+    border-radius: 38px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    display: flex; /*Utiliserflexpouralignerleséléments*/
+    align-items: center; /*Centrerlesélémentsverticalement*/justify-content: center;
+    /*Centrerlecontenuinitialement*/
+    padding: 40px 20px; /*Augmentationdupaddingpouragrandirlahauteur*/
+    width: 200px; /*Largeurinitiale*/
+    overflow: hidden; /*Cacheledébordementlorsdel'expansion*/
+    transition: width 0.3s ease, justify-content 0.3s ease; /*Transitionpourl'élargissementetlerepositionnement*/:;
+}
+
+.donate-options{
+    display: none;
+}
+
+#donate-container:hover .donate-options {
+    display: flex;
+    transition: opacity 0.2s ease 0.3s; /* Les rend visibles après l'expansion */
+    position: absolute; /* Position absolue pour placer précisément les options */
+    left: 200px; /* Position de départ ajustée pour bien intégrer à l'intérieur du bouton */
+    top: 0;
+    height: 100%; /* Assure que les options prennent toute la hauteur du bouton */
+    margin-right: 0.5rem;
+}
+
+.donate-button:hover {
+    width: 400px; /* Largeur une fois agrandi */
+    justify-content: flex-start; /* Alignement à gauche après expansion */
+}
+
+.donate-button:hover .donate-options {
+    opacity: 1; /* Rend les options visibles au survol */
+}
+
+.donate-option {
+    background-color: #ffffff; /* Fond clair pour distinguer les options */
+    color: #000;
+    border-radius: 15px;
+    padding: 5px 10px;
+    margin: 5px; /* Espacement entre les options */
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+}
+
+.donate-option a {
+    text-decoration: none;
+}
+
+.donate-option a:hover{
+    color: var(--primary-color);
+}
+
+.donate-option:hover {
+    background-color: #eee; /* Réaction visuelle au survol */
+}
+.heart-icon {
+    font-size: 30px; /* Agrandit l'icône du cœur */
+    position: relative; /* Le positionnement relatif permet de positionner le symbole € absolument par rapport à lui */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.currency-symbol {
+    position: absolute; /* Positionnement absolu du symbole € par rapport à son parent .heart-icon */
+    font-size: 15px; /* Ajustez la taille du symbole € si nécessaire */
+    color: black; /* Couleur du texte pour le symbole € */
+}
+
+.button-content {
+    position: absolute;
+    left: 10px;
+    vertical-align: center;
+    display: flex;
+    align-items: center;
+
+}
+
+.button-content p, .button-content span {
+    margin: 0.3rem;
+}
+
+/**
+ * PAGINATION
+ */
+
+.page-link {
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+}
+.page-link:hover {
+    background-color: var(--primary-color-dark);
+    color: var(--secondary-color);
+}
+
+.page-link.active {
+    color: var(--primary-color-dark);
+}
+.page-link.active:hover {
+    background-color: var(--secondary-color);
+}
+
+/**
+ * CONTACT PAGE
+ */
+
+.wpcf7-submit{
+    padding: 5px 20px;
+    border: solid 1px var(--primary-color);
+    background-color: var(--primary-color);
+    border-radius: 28px;
+    justify-content: center;
+    color: var(--text-color);
+    white-space: nowrap;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+}
+
+/**
+ * FOOTER
+ */
+
+.text-copyright{
+    font-style: italic;
+    font-size: smaller;
+    color: var(--primary-color);
+}
+
+.reseaux-sociaux{
+    color: var(--primary-color);
+}
+
+.img-logo-footer{
+    max-width: 200px;
+}
+
+.menu-footer ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.menu-footer li{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+@media screen and (max-width: 998px) {
+    .menu-footer{
+        width: 90%;
+        margin: auto;
+    }
+    .menu-footer li, .menu-footer a, .menu-footer ul{
+        display: inline-block;
+        margin: 0.2rem auto;
+    }
+    .img-logo-footer{
+        margin: 1rem auto;
+        width: 50%;
+        display: block;
+    }
+}
+
+/**
+ * CLASSES UTILITAIRES
+ */
+
+.marge-negative-top {
+    margin-top: -10rem;
+}
+
+.marge-negative-bottom {
+    margin-bottom: -10rem;
+}
+
+.badge-geographie{
+    display: inline-block;
+    padding: .35em .65em;
+    font-weight: 700;
+    line-height: 1;
+    font-size: large;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-radius: 3rem;
+    background-color: var(--primary-color);
+}
+
+.margin-single{
+    margin-top: 5rem;
+}

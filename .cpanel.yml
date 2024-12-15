@@ -1,0 +1,6 @@
+deployment:
+  tasks:
+    - export WPC=/home/repositories/arche-de-ninie/wp-content/
+    - /bin/rm -rf $WPC
+    - /bin/mkdir $WPC
+    - /bin/cp -r * $WPC

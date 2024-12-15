@@ -1,0 +1,1 @@
+ре^g<?php exit; ?>a:2:{s:7:"content";s:61:"a:2:{s:4:"path";s:14:"wpvividbackups";s:10:"save_local";i:1;}";s:15:"key_version_all";i:6;}
