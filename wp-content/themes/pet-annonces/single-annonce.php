@@ -47,7 +47,6 @@ endif;
                 <div class="col-lg-8 offset-lg-2">
                     <h3 class="my-2">Informations supplémentaires</h3>
                     <?php if ($age) : ?>
-                    <?php var_dump($age); ?>
                         <p>Age : <?= $age ?></p>
                     <?php endif; ?>
                 </div>

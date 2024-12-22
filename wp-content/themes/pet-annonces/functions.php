@@ -251,46 +251,44 @@ function getAnimalAge($age = null, $unite = null, $birthDate = null) {
     if (empty($birthDate)) {
         // Traiter en fonction de l'âge et de l'unité
         if (empty($age)) {
-            return ''; // Aucun âge à afficher
-        } else {
-            if ($age == 1 && $unite === "Ans") {
-                return $age . ' an';
-            } elseif ($unite === "Ans") {
-                return $age . ' ans';
-            } elseif ($unite === "Mois") {
-                return $age . ' mois';
-            } else {
-                return $age; // Cas par défaut si l'unité est inconnue
-            }
+            return '';
         }
-    } else {
-        // Si une date de naissance est fournie, calculer l'âge
-        $birthDateObject = DateTime::createFromFormat('m/Y', $birthDate);
-        if ($birthDateObject === false) {
-            throw new Exception('Invalid date format for birthDate: ' . $birthDate);
+        if ($age == 1 && $unite === "Ans") {
+            return $age . ' an';
         }
-
-        $now = new DateTime();
-        $ageYears = $now->diff($birthDateObject)->y;
-        $ageMonths = $now->diff($birthDateObject)->m;
-
-        if ($ageYears == 0 && $ageMonths >= 1) {
-            return $ageMonths . ' mois';
+        if ($unite === "Ans") {
+            return $age . ' ans';
         }
-        if ($ageYears == 1) {
-            $years = 'an';
+        if ($unite === "Mois") {
+            return $age . ' mois';
         }
-        if ($ageYears > 1) {
-            $years = 'ans';
-        }
-
-        if ($ageMonths == 0 || $ageYears > 2) {
-            if ($ageMonths > 6) {
-                return ($ageYears + 1) . ' ' . $years;
-            }
-            return $ageYears . ' ' . $years;
-        }
-
-        return $ageYears . ' ' . $years . ' ' . $ageMonths . ' mois';
+        return $age; // Cas par défaut si l'unité est inconnue
     }
+    $birthDateObject = DateTime::createFromFormat('m/Y', $birthDate);
+    if ($birthDateObject === false) {
+        throw new Exception('Invalid date format for birthDate: ' . $birthDate);
+    }
+
+    $now = new DateTime();
+    $ageYears = $now->diff($birthDateObject)->y;
+    $ageMonths = $now->diff($birthDateObject)->m;
+
+    $years = ' an';
+    $monthes = ' mois';
+
+    if ($ageYears == 0 && $ageMonths >= 1) {
+        return $ageMonths . $monthes;
+    }
+    if ($ageYears > 1) {
+        $years = ' ans';
+    }
+
+    if ($ageMonths == 0 || $ageYears > 2) {
+        if ($ageMonths > 6) {
+            return ($ageYears + 1) . $years;
+        }
+        return $ageYears . $years;
+    }
+
+    return $ageYears . $years . ' et ' . $ageMonths . $monthes;
 }
