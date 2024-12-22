@@ -52,3 +52,11 @@ wp-config.php
 /wp-content/wpvividbackups
 /wp-content/plugins/advanced-custom-fields/
 /wp-content/cache/
+/robots.txt
+/error_log
+/.htaccess_old
+/.cpanel.yml
+/wp-content/wpvivid_staging/.htaccess
+/wp-content/wpvivid_staging/index.html
+/wp-content/w3tc-config/index.html
+/wp-content/w3tc-config/master.php
