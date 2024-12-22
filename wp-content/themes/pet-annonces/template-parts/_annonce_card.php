@@ -21,21 +21,10 @@ endif;
 $ageField = get_field( 'annonce_age_de_lanimal', get_the_ID());
 $age = $ageField['annonce_age_nombre'];
 $unite = $ageField['annonce_age_unite'];
-if (empty($age)) :
-    $age = '';
-else :
-    if($age == 1 && $unite == "Ans") :
-        $age = $age . ' ' . 'an';
-    elseif ($unite == "Ans") :
-        $age = $age . ' ' . 'ans';
-    else:
-        $age = $age . ' ' . 'mois';
-    endif;
-    $age = ', ' . $age;
-endif;
-// On fait une petite mise en forme pour les infos de l'annonce
-// exemple de résultat attendu : "Chat siamois, 2 ans"
-$petInfo = $shortDesc . $age;
+$dateOfBirth = get_field('annonce_date_de_naissance', get_the_ID());
+$age = getAnimalAge($age, $unite, $dateOfBirth);
+
+$petInfo = $shortDesc . '<br>' . $age;
 
 $icon = '';
 // On affiche le Sexe : signe de venus pour les femelles, signe de mars pour les males, rien si aucun sexe n'est renseigné

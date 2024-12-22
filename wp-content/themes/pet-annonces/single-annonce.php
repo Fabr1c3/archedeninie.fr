@@ -3,17 +3,11 @@
 $ageField = get_field( 'annonce_age_de_lanimal', get_the_ID());
 $age = $ageField['annonce_age_nombre'];
 $unite = $ageField['annonce_age_unite'];
-if (empty($age)) :
-    $age = '';
-else :
-    if($age == 1 && $unite == "Ans") :
-        $age = $age . ' ' . 'an';
-    elseif ($unite == "Ans") :
-        $age = $age . ' ' . 'ans';
-    else:
-        $age = $age . ' ' . 'mois';
-    endif;
-endif;
+$birthDate = get_field('annonce_date_de_naissance', get_the_ID());
+
+$age = getAnimalAge($age, $unite, $birthDate);
+
+
 
 $image = get_field('annonce_card_items')['annonce_image']['url'];
 if(empty($image)):
@@ -53,6 +47,7 @@ endif;
                 <div class="col-lg-8 offset-lg-2">
                     <h3 class="my-2">Informations supplémentaires</h3>
                     <?php if ($age) : ?>
+                    <?php var_dump($age); ?>
                         <p>Age : <?= $age ?></p>
                     <?php endif; ?>
                 </div>
