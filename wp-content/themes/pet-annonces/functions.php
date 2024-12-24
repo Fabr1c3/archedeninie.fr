@@ -247,8 +247,8 @@ function arche_disable_sitemap_taxonomy($taxonomies) {
 add_filter('wp_sitemaps_taxonomies', 'arche_disable_sitemap_taxonomy');
 
 function getAnimalAge($age = null, $unite = null, $birthDate = null) {
-    // Si aucune date de naissance n'est fournie
-    if ($birthDate === null) {
+    if (!$birthDate) {
+
         // Traiter en fonction de l'âge et de l'unité
         if (empty($age)) {
             return '';

@@ -2,17 +2,22 @@
 
 $gender =get_post_meta(get_the_ID(), 'annonce_sexe_de_lanimal', true);
 $ageField = get_field( 'annonce_age_de_lanimal', get_the_ID());
-$age = $ageField['annonce_age_nombre'];
+$ageValue = $ageField['annonce_age_nombre'];
 $unite = $ageField['annonce_age_unite'];
 $birthDate = get_field('annonce_date_de_naissance', get_the_ID());
 $longDate = '';
+$age ='';
 if($birthDate){
     $birthDateObject = DateTime::createFromFormat('m/Y', $birthDate);
     setlocale(LC_TIME, 'fr_FR.UTF-8');
     $longDate = ucfirst(date('%B %Y', $birthDateObject->getTimestamp()));
 }
-$age = getAnimalAge($age, $unite, $birthDate);
-$categoryAge = getAnimalSeniorite($age);
+if ($birthDate !== null) {
+    $age = getAnimalAge(null, null, $birthDate);
+}
+if (!$age){
+    $age = getAnimalAge($ageField['annonce_age_nombre'], $ageField['annonce_age_unite']);
+}$categoryAge = getAnimalSeniorite($age);
 
 $textContent = get_field('texte_de_lannonce');
 
