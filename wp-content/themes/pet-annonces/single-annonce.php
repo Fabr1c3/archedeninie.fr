@@ -39,10 +39,13 @@ $otherImages = get_field('autres_images');
     <article id="post-<?php the_ID(); ?>" <?php post_class('single-animal-page'); ?>>
 
         <!-- Bouton retour ou lien vers la liste des animaux -->
-        <div class="back-navigation">
-            <a href="<?php echo get_post_type_archive_link('animal'); ?>" class="back-link">
-                <span class="arrow-icon">&#8592;</span> <!-- Ou un SVG si vous préférez -->
-                Retour
+        <div class="back-navigation" title="Retour">
+            <a href="<?php echo wp_get_referer('animal'); ?>" class="back-link">
+                <?php $svg_file = get_stylesheet_directory() . '/assets/svg/referer.svg';
+                if ( file_exists( $svg_file ) ) {
+                echo file_get_contents( $svg_file );
+                }
+                ?>
             </a>
         </div>
 
@@ -431,7 +434,12 @@ get_footer();
             height: 40px;
         }
     }
-
+.back-navigation a svg {
+    width: 40px;
+    height: 40px;
+    fill: var(--primary-color);
+    transition: fill 0.3s ease;
+}
 
 </style>
 
