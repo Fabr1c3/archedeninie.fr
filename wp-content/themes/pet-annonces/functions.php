@@ -265,8 +265,9 @@ function getAnimalAge($age = null, $unite = null, $birthDate = null) {
         return $age; // Cas par défaut si l'unité est inconnue
     }
     $birthDateObject = DateTime::createFromFormat('m/Y', $birthDate);
+
     if ($birthDateObject === false) {
-        throw new Exception('Invalid date format for birthDate: ' . $birthDate);
+        return '';
     }
 
     $now = new DateTime();
