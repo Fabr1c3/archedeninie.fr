@@ -7,9 +7,10 @@ $unite = $ageField['annonce_age_unite'];
 $birthDate = get_field('annonce_date_de_naissance', get_the_ID());
 $longDate = '';
 $age ='';
-if($birthDate){
+if($birthDate !== null){
     $birthDateObject = DateTime::createFromFormat('m/Y', $birthDate);
     setlocale(LC_TIME, 'fr_FR.UTF-8');
+
     $longDate = ucfirst(date('%B %Y', $birthDateObject->getTimestamp()));
 }
 if ($birthDate !== null) {
