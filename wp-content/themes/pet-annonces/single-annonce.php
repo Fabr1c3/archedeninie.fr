@@ -10,8 +10,9 @@ $age ='';
 if($birthDate !== null){
     $birthDateObject = DateTime::createFromFormat('m/Y', $birthDate);
     setlocale(LC_TIME, 'fr_FR.UTF-8');
-
-    $longDate = ucfirst(date('%B %Y', $birthDateObject->getTimestamp()));
+    if ($birthDateObject) {
+        $longDate = ucfirst(date('%B %Y', $birthDateObject->getTimestamp()));
+    }
 }
 if ($birthDate !== null) {
     $age = getAnimalAge(null, null, $birthDate);
