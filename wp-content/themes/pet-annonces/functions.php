@@ -292,3 +292,58 @@ function getAnimalAge($age = null, $unite = null, $birthDate = null) {
 
     return $ageYears . $years . ' et ' . $ageMonths . $monthes;
 }
+
+function getAnimalSeniorite(string $age): string
+{
+    // Exemples possibles de $age :
+    // "4 mois", "1 an", "1 an et 3 mois", "10 ans", "10 ans et 2 mois", etc.
+
+    // 1) Séparer en morceaux, on aura un tableau du style :
+    //   "2 ans et 3 mois" => ["2", "ans", "et", "3", "mois"]
+    //   "4 mois"         => ["4", "mois"]
+    //   "1 an"           => ["1", "an"]
+    //   "1 an et 8 mois" => ["1", "an", "et", "8", "mois"]
+    $parts = explode(' ', $age);
+
+    // 2) Extraire le nombre d'années et de mois
+    //    On va compter combien d'années/mois apparaissent dans la chaîne.
+    $totalMonths = 0;
+
+    // Petite fonction interne pour convertir "X an(s)" en X * 12, et "Y mois" en Y.
+    $parseChunk = function (array $array, int $i) {
+        // On regarde $array[$i] = quantité, $array[$i+1] = "an"/"ans"/"mois"
+        $number = (int) $array[$i];
+        $unit   = $array[$i+1] ?? '';
+
+        if (str_starts_with($unit, 'an')) {
+            return $number * 12;
+        }
+        if (str_starts_with($unit, 'mois')) {
+            return $number;
+        }
+        return 0; // par défaut
+    };
+
+    // 3) Parcourir le tableau $parts pour détecter "X an(s)" et "Y mois"
+    //    Indice : s'il y a "et" au milieu, on le saute.
+    for ($i = 0; $i < count($parts); $i++) {
+        if (is_numeric($parts[$i])) {
+            // On lit le nombre + l’unité
+            $totalMonths += $parseChunk($parts, $i);
+            $i++; // on avance d'un cran en plus car on a traité [nombre, unité]
+        }
+    }
+
+    // 4) Décider de la catégorie en fonction du total des mois
+    if ($totalMonths < 6) {
+        return 'Chaton';
+    }
+    if ($totalMonths < 24) {
+        return 'Junior';
+    }
+    if ($totalMonths < 120) {
+        return 'Adulte';
+    }
+    return 'Senior';
+}
+

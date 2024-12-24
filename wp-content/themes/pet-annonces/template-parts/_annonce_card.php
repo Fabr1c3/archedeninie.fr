@@ -10,7 +10,7 @@ $sex = get_post_meta(get_the_ID(), 'annonce_sexe_de_lanimal', true);
 // On propose de mettre une courte description dans le formulaire (par exemple : "chat siamois")
 // On la récupère ici
 $cardItems = get_field('annonce_card_items', get_the_ID());
-$shortDesc = $cardItems['annonce_courte_description'];
+$shortDesc = get_field('annonce_ville', get_the_ID()) ?? $cardItems['annonce_courte_description'];
 $categoryId = get_field('annonce_categorie', get_the_ID());
 $category = get_term_by('id', $categoryId, 'categorie-danimal')->name;
 if(empty($shortDesc) || $shortDesc == '') :
