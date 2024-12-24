@@ -9,10 +9,24 @@ $longDate = '';
 $age ='';
 if($birthDate !== null){
     $birthDateObject = DateTime::createFromFormat('m/Y', $birthDate);
-    setlocale(LC_TIME, 'fr_FR.UTF-8');
-    if ($birthDateObject) {
-        $longDate = ucfirst(date('%B %Y', $birthDateObject->getTimestamp()));
-    }
+
+// Créer un IntlDateFormatter pour la locale française.
+// Format MEDIUM, ou LONG, ou ce que tu veux, et on peut ensuite affiner avec un pattern.
+    $formatter = new IntlDateFormatter(
+        'fr_FR',                // Locale
+        IntlDateFormatter::LONG, // Format date (on pourrait mettre MEDIUM ou SHORT)
+        IntlDateFormatter::NONE, // Format heure (NONE si on ne veut pas d'heure)
+    );
+
+// On peut définir un pattern précis pour forcer l'affichage « mois complet + année ».
+// Exemple : "LLLL yyyy" => "janvier 2023"
+    $formatter->setPattern('LLLL yyyy');
+
+// Puis on formate :
+    $longDate = $formatter->format($birthDateObject);
+
+// On peut capitaliser la première lettre si besoin :
+    $longDate = ucfirst($longDate);
 }
 if ($birthDate !== null) {
     $age = getAnimalAge(null, null, $birthDate);
