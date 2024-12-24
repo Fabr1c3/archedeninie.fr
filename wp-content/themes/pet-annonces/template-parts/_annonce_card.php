@@ -21,12 +21,13 @@ endif;
 $ageField = get_field( 'annonce_age_de_lanimal', get_the_ID());
 $dateOfBirth = get_field('annonce_date_de_naissance', get_the_ID());
 $age = '';
-if ($dateOfBirth !== null) {
+if (! empty($dateOfBirth)) {
     $age = getAnimalAge(null, null, $dateOfBirth);
 }
-if (!$age){
+if (! $age) {
     $age = getAnimalAge($ageField['annonce_age_nombre'], $ageField['annonce_age_unite']);
 }
+
 
 $petInfo = $shortDesc . '<br>' . $age;
 

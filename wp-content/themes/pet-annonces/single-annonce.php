@@ -33,7 +33,9 @@ if ($birthDate !== null) {
 }
 if (!$age){
     $age = getAnimalAge($ageField['annonce_age_nombre'], $ageField['annonce_age_unite']);
-}$categoryAge = getAnimalSeniorite($age);
+}
+
+$categoryAge = getAnimalSeniorite($age);
 
 $textContent = get_field('texte_de_lannonce');
 
