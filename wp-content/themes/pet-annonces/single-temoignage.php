@@ -14,7 +14,7 @@
     <div class="profile-side">
         <?php $image = get_field('illustration_du_temoignage');
         if ($image) : ?>
-        ?>
+
         <!-- Photo de l'animal ou auteur du témoignage -->
         <div class="profile-pic-wrapper">
             <img

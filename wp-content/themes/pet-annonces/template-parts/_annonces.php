@@ -22,7 +22,7 @@ $annonces_query = new WP_Query([
 if ($annonces_query->have_posts()) :
     ?>
 
-    <section class="adopt-pet">
+    <section class="adopt-pet" id="adopt-pet">
         <div class="w-100 m-auto">
             <div class="m-auto">
                 <div class="align-items-center pb-5 mt-5">

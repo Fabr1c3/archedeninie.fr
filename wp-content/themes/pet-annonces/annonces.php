@@ -36,6 +36,7 @@ if (get_field('la_page_a-t-elle_des_cartes_de_procedure_')){
     get_template_part('template-parts/_procedure_cards');
 }
 
+
 get_template_part('template-parts/_annonces');
 
 if (get_field('carrousel')['la_page_presente-t-elle_un_carrousel_']){

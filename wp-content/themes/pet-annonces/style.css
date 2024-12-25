@@ -1038,8 +1038,8 @@ a.nav-link:hover {
     justify-content: center;
     align-items: center;
     margin: auto;
-    height: auto; /* Hauteur flexible */
-    min-width: 31%; /* Largeur max */
+    height: 270px;
+    min-width: 31%;
     padding: 1rem;
     background-color: var(--primary-color);
     border-radius: 16px; /* Arrondi doux */
