@@ -17,6 +17,9 @@ $longDate = '';
 $age ='';
 if(!empty($birthDate) && $birthDate !== '') {
     $birthDateObject = DateTime::createFromFormat('m/Y', $birthDate);
+    if($birthDateObject === false) {
+        $birthDateObject = DateTime::createFromFormat('Ymd', $birthDate);
+    }
     $formatter = new IntlDateFormatter(
         'fr_FR',
         IntlDateFormatter::LONG,
