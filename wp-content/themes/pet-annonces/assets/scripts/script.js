@@ -1,15 +1,3 @@
-// Dans ton script principal
-document.addEventListener('DOMContentLoaded', function() {
-    const forms = document.querySelectorAll('.wpcf7-form');
-    forms.forEach(form => {
-        form.addEventListener('wpcf7reset', function(e) {
-            console.log('[MON CODE] wpcf7reset TRIGGERED');
-        });
-    });
-});
-
-
-
 
 // Filtre des actualités par catégorie
 document.addEventListener('DOMContentLoaded', function() {
