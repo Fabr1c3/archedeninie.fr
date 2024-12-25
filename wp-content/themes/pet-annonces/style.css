@@ -159,6 +159,7 @@ a.nav-link:hover {
     background-size: cover; /* Ajuster la taille de l'image pour couvrir la hauteur */
     height: 600px;
     background-repeat: no-repeat;
+    margin-top: 100px !important;
 }
 
 .title-hero-banner span{
@@ -1030,4 +1031,327 @@ a.nav-link:hover {
     height: 40px;
     fill: var(--primary-color);
     transition: fill 0.3s ease;
+}
+
+.container-temoignage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: auto; /* Hauteur flexible */
+    min-width: 31%; /* Largeur max */
+    padding: 1rem;
+    background-color: var(--primary-color);
+    border-radius: 16px; /* Arrondi doux */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.quote-card {
+    background-color: white;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    border-radius: 40px 0 40px 0;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 90%;
+    position: relative;
+    text-align: center;
+}
+
+.quote-card::before {
+    content: "“";
+    position: absolute;
+    top: 2.5rem;
+    left: 1rem;
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: dashicons, serif;
+    opacity: 0.7;
+}
+
+.quote-card::after {
+    content: "”";
+    position: absolute;
+    bottom: 2.5rem;
+    right: 1rem;
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: dashicons, serif;
+    opacity: 0.7;
+}
+
+.quote-card h2 {
+    font-size: 1.5rem;
+    color: #2f2b2b;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 1rem;
+}
+
+.quote-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-color);
+    margin: 1rem 0;
+    text-align: center;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limite à 3 lignes */
+    -webkit-box-orient: vertical;
+}
+
+.quote-card .author {
+    font-size: 0.875rem;
+    color: var(--primary-color-dark);
+    font-style: italic;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1rem;
+    transition: color 0.3s;
+}
+
+.quote-card .author:hover {
+    color: #000;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -25px;
+    left: 1rem;
+    border: 3px solid #ffffff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+}
+
+.right-image {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    bottom: -40px;
+    right: -1rem;
+    opacity: 0.7;
+}
+
+.right-image svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container-temoignage {
+        width: 90%;
+    }
+    .profile-image {
+        width: 80px;
+        height: 80px;
+        bottom: -30px;
+    }
+    .right-image {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Hero section */
+.hero-temoignage {
+    position: relative;
+    height: 20vh;
+    margin-top: 100px;
+}
+.hero-overlay {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero-title {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+/* Container principal */
+.single-temoignage-container {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: -50px auto 0; /* petit décalage vers le haut */
+    padding: 2rem;
+}
+
+/* Colonne gauche : photo, auteur, etc. */
+.profile-side {
+    flex: 1;
+    max-width: 300px;
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.profile-pic-wrapper {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.profile-pic {
+    width: 80%;
+    border-radius: 1.5rem;
+    object-fit: contain;
+}
+.temoignage-author {
+    text-align: center;
+    color: var(--text-color);
+    margin-top: 1rem;
+}
+
+/* Colonne droite : contenu du témoignage */
+.temoignage-content {
+    flex: 2;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.quote-container {
+    position: relative;
+    padding: 1rem;
+    color: var(--text-color);
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.quote-container p {
+    margin-top: 3rem;
+}
+
+/* Petites guillemets décoratives */
+.left-quote, .right-quote {
+    font-size: 4rem;
+    font-weight: bold;
+    font-family: dashicons, serif;
+    color: var(--primary-color-dark);
+    position: absolute;
+}
+.left-quote {
+    top: -10px;
+    left: -10px;
+}
+.right-quote {
+    bottom: -20px;
+    right: -10px;
+}
+
+/* Bouton en bas de page */
+.link-back {
+    margin-top: 2rem;
+    text-align: center;
+}
+.btn-back {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.btn-back:hover {
+    background-color: var(--primary-color-dark);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .single-temoignage-container {
+        flex-direction: column;
+        padding: 1rem;
+        margin-top: 0;
+    }
+
+    .profile-side, .temoignage-content {
+        max-width: 100%;
+    }
+
+    .left-quote {
+        left: 0;
+    }
+    .right-quote {
+        right: 0;
+    }
+}
+
+.carousel-container {
+    position: relative;
+    overflow: hidden; /* Cache les éléments qui dépassent */
+    width: 100%;
+    margin: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .carousel-container {
+        position: unset;
+        overflow: hidden;
+        width: 90vw;
+    }
+
+}
+
+.carousel-track {
+    display: flex; /* Les items sont placés en ligne */
+    gap: 5vw;
+    transition: transform 0.5s ease-in-out; /* Transition fluide */
+}
+
+.carousel-item {
+    flex: 0 0 ; /* Chaque item prend 1/3 de la largeur */
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+}
+
+@media screen and (max-width: 768px) {
+    .carousel-button {
+        display: none;
+    }
+}
+
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+
+.carousel-button:hover {
+    background: var(--primary-color-dark);
+}
+
+@media (max-width: 768px) {
+    .carousel-item {
+        flex: 0 0 100%; /* Une seule card visible sur mobile */
+        max-width: 100%;
+    }
 }

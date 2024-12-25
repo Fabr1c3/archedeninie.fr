@@ -36,8 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 })
                 .catch(error => {
-                    console.error('Erreur:', error);
-                    // En cas d'erreur, on peut éventuellement restaurer le texte du bouton
                     if (submitButton) {
                         submitButton.innerHTML = 'Réessayer';
                     }
@@ -82,8 +80,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 })
                 .catch(error => {
-                    console.error('Erreur:', error);
-                    // En cas d'erreur, on peut restaurer ou changer l'affichage du bouton
                     if (submitButton) {
                         submitButton.innerHTML = 'Réessayer';
                     }
@@ -116,8 +112,6 @@ document.addEventListener('DOMContentLoaded', function() {
     applySubjectSelection();    const forms = document.querySelectorAll('.wpcf7-form');
     forms.forEach(form => {
         form.addEventListener('wpcf7reset', function(e) {
-            console.log('wpcf7reset déclenché sur:', form);
-            // Ici, ton code pour re-sélectionner l’option, etc.
             applySubjectSelection();
         });
     });
@@ -156,4 +150,77 @@ document.addEventListener('DOMContentLoaded', function() {
             thumbnail.alt = oldAlt;
         });
     });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const track = document.querySelector('.carousel-track');
+    const items = document.querySelectorAll('.carousel-item');
+    const nextButton = document.querySelector('.carousel-button.next');
+    const prevButton = document.querySelector('.carousel-button.prev');
+    const visibleItems = 3; // Nombre de cartes visibles
+    let currentIndex = 0;
+
+    // Vérifier si des items existent
+    if (items.length === 0) {
+        console.warn('Aucun item trouvé dans le carrousel.');
+        return; // Arrêter le script si aucun item
+    }
+
+    // Calcul de la largeur d'un item (ajout de 16px pour le gap)
+    const itemWidth = items[0].offsetWidth + 16;
+
+    // Fonction pour mettre à jour la position du carrousel
+    const updateCarousel = () => {
+        const offset = currentIndex * itemWidth;
+        track.style.transform = `translateX(-${offset}px)`;
+        console.log('Current Index:', currentIndex); // Log du currentIndex pour débogage
+    };
+
+    // Bouton suivant
+    nextButton.addEventListener('click', () => {
+        if (currentIndex < items.length - visibleItems) {
+            currentIndex++;
+        } else {
+            currentIndex = 0; // Revenir au début
+        }
+        updateCarousel();
+    });
+
+    // Bouton précédent
+    prevButton.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+        } else {
+            currentIndex = items.length - visibleItems; // Aller à la fin
+        }
+        updateCarousel();
+    });
+
+    // Défilement automatique
+    let autoScroll = setInterval(() => {
+        if (currentIndex < items.length - visibleItems) {
+            currentIndex++;
+        } else {
+            currentIndex = 0;
+        }
+        updateCarousel();
+    }, 3000);
+
+    // Pause le défilement au survol
+    [nextButton, prevButton, track].forEach(element => {
+        element.addEventListener('mouseenter', () => clearInterval(autoScroll));
+        element.addEventListener('mouseleave', () => {
+            autoScroll = setInterval(() => {
+                if (currentIndex < items.length - visibleItems) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0;
+                }
+                updateCarousel();
+            }, 3000);
+        });
+    });
+
+    // Initialisation du carrousel
+    updateCarousel();
 });

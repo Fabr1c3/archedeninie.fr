@@ -247,15 +247,7 @@ function arche_disable_sitemap_taxonomy($taxonomies) {
 add_filter('wp_sitemaps_taxonomies', 'arche_disable_sitemap_taxonomy');
 
 function getAnimalAge($age = null, $unite = null, $birthDate = null) {
-    error_log('[getAnimalAge] $birthDate=' . print_r($birthDate, true));
-    error_log('[getAnimalAge] $age=' . print_r($age, true));
-    error_log('[getAnimalAge] $unite=' . print_r($unite, true));
     if (!$birthDate) {
-
-        // Traiter en fonction de l'âge et de l'unité
-        if (empty($age)) {
-            return '';
-        }
         if ($age == 1 && $unite === "Ans") {
             return $age . ' an';
         }
@@ -265,7 +257,7 @@ function getAnimalAge($age = null, $unite = null, $birthDate = null) {
         if ($unite === "Mois") {
             return $age . ' mois';
         }
-        return $age; // Cas par défaut si l'unité est inconnue
+        return $age;
     }
     $birthDateObject = DateTime::createFromFormat('m/Y', $birthDate);
 

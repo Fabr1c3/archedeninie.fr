@@ -33,6 +33,15 @@ if (get_field('animaux_mis_en_avant')['la_page_a-t-elle_des_animaux_mis_en_avant
     get_template_part('template-parts/_annonces_mises_en_avant');
 }
 
+get_template_part('template-parts/_temoignages');
+
+$temoignages_query = new WP_Query([
+    'post_type' => 'temoignage',
+    'post_status' => 'publish',
+]);
+
+if (!$temoignages_query->have_posts()) :
+
 if (get_field('carrousel_temoignages')['la_page_presente-t-elle_un_carrousel_temoignages']){
     get_template_part('template-parts/_carrousel', null, [
 		'title' => get_field('carrousel_temoignages')['titre_du_carrousel_temoignages'],
@@ -40,6 +49,8 @@ if (get_field('carrousel_temoignages')['la_page_presente-t-elle_un_carrousel_tem
 		'choice' => get_field('carrousel_temoignages')['choix_du_carrousel_temoignages'],
 	]);
 }
+
+endif;
 
 get_template_part('template-parts/_comment_nous_aider');
 
