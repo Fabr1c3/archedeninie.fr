@@ -57,3 +57,41 @@ for (let i = 0; i < participationCards.length; i++) {
         }
     });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const params = new URLSearchParams(window.location.search);
+    const subject = params.get('your-subject');
+    if (subject) {
+        const selectEl = document.querySelector('select[name="your-subject"]');
+
+        if (selectEl) {
+            [...selectEl.options].every(option => {
+                console.log(option.value);
+                if (option.value === subject) {
+                    console.log('Selected');
+                    option.selected = true;
+                    return false;
+                }
+                return true;
+            });
+        }
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const mainImage = document.querySelector('.animal-main-image .main-image');
+    const thumbnails = document.querySelectorAll('.animal-thumbnails .thumbnail');
+
+    thumbnails.forEach(function(thumbnail) {
+        thumbnail.addEventListener('click', function() {
+            const oldSrc = mainImage.src;
+            const oldAlt = mainImage.alt;
+
+            mainImage.src = thumbnail.src;
+            mainImage.alt = thumbnail.alt;
+
+            thumbnail.src = oldSrc;
+            thumbnail.alt = oldAlt;
+        });
+    });
+});

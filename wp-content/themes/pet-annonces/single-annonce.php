@@ -2,36 +2,25 @@
 
 $gender =get_post_meta(get_the_ID(), 'annonce_sexe_de_lanimal', true);
 $ageField = get_field( 'annonce_age_de_lanimal', get_the_ID());
-$ageValue = $ageField['annonce_age_nombre'];
-$unite = $ageField['annonce_age_unite'];
 $birthDate = get_field('annonce_date_de_naissance', get_the_ID());
 $longDate = '';
 $age ='';
-if($birthDate !== null){
+if(!empty($birthDate) && $birthDate !== '') {
     $birthDateObject = DateTime::createFromFormat('m/Y', $birthDate);
-
-// Créer un IntlDateFormatter pour la locale française.
-// Format MEDIUM, ou LONG, ou ce que tu veux, et on peut ensuite affiner avec un pattern.
     $formatter = new IntlDateFormatter(
-        'fr_FR',                // Locale
-        IntlDateFormatter::LONG, // Format date (on pourrait mettre MEDIUM ou SHORT)
-        IntlDateFormatter::NONE, // Format heure (NONE si on ne veut pas d'heure)
+        'fr_FR',
+        IntlDateFormatter::LONG,
+        IntlDateFormatter::NONE,
     );
-
-// On peut définir un pattern précis pour forcer l'affichage « mois complet + année ».
-// Exemple : "LLLL yyyy" => "janvier 2023"
     $formatter->setPattern('LLLL yyyy');
 
-// Puis on formate :
     $longDate = $formatter->format($birthDateObject);
 
-// On peut capitaliser la première lettre si besoin :
     $longDate = ucfirst($longDate);
-}
-if ($birthDate !== null) {
     $age = getAnimalAge(null, null, $birthDate);
 }
-if (!$age){
+
+if ($age === ''){
     $age = getAnimalAge($ageField['annonce_age_nombre'], $ageField['annonce_age_unite']);
 }
 
@@ -277,216 +266,3 @@ $otherImages = get_field('autres_images');
 <?php
 get_footer();
 ?>
-
-<style>
-    /* Basique reset / structure */
-    .single-animal-page {
-        color: var(--text-color);
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 1rem;
-    }
-
-    /* Bouton retour */
-    .back-navigation {
-        margin-bottom: 1rem;
-    }
-    .back-link {
-        text-decoration: none;
-        color: var(--text-color);
-        font-weight: bold;
-        display: inline-flex;
-        align-items: center;
-    }
-    .arrow-icon {
-        margin-right: 0.5rem;
-    }
-
-    /* Disposition globale de la page */
-    .single-animal-container {
-        display: flex;
-        gap: 1rem;
-    }
-
-    /* Colonne gauche (vignettes) */
-    .animal-thumbnails {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-    .thumbnail {
-        width: 60px;
-        height: 60px;
-        background-color: #ccc;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    /* Image principale */
-    .animal-main-image {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .animal-main-image img {
-        width: 100%;
-        height: auto;
-        border-radius: 8px;
-    }
-
-    /* Infos principales de l’animal (droite) */
-    .animal-info {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        gap: 0.5rem;
-    }
-    .animal-name {
-        font-size: 1.5rem;
-        margin: 0;
-    }
-    .animal-name .mention {
-        font-size: 1rem;
-        padding: 0.2rem 0.4rem;
-        background-color: var(--primary-color);
-        border-radius: 4px;
-        margin-left: 0.5rem;
-        color: #fff;
-    }
-    .publish-date {
-        color: #666;
-        font-size: 0.9rem;
-    }
-    .animal-health {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-weight: bold;
-    }
-    .adoption-intent {
-        margin-top: 1rem;
-        font-style: italic;
-    }
-    .animal-name-highlight {
-        color: var(--primary-color-dark);
-    }
-
-    /* Bouton principal */
-    .cta-button {
-        display: inline-block;
-        background-color: var(--primary-color);
-        color: #fff;
-        padding: 0.6rem 1.2rem;
-        border-radius: 4px;
-        text-decoration: none;
-        font-weight: 600;
-        margin-top: 0.5rem;
-        transition: background-color 0.3s ease;
-    }
-    .cta-button:hover {
-        background-color: var(--primary-color-dark);
-    }
-
-    /* Section Informations */
-    .animal-details {
-        margin-top: 2rem;
-    }
-    .animal-details h2 {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-    }
-    .animal-details p {
-        line-height: 1.5;
-    }
-
-    /* Bloc incompatibilité */
-    .animal-incompatibility {
-        margin-top: 2rem;
-    }
-    .animal-incompatibility h2 {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-    }
-    .animal-incompatibility ul {
-        list-style: none;
-        display: flex;
-        gap: 1rem;
-        padding: 0;
-        margin: 0;
-    }
-    .animal-incompatibility li img {
-        width: 40px;
-        height: 40px;
-    }
-
-    /* Bouton pour tous les animaux */
-    .all-animals-button {
-        margin-top: 2rem;
-        text-align: center;
-    }
-
-    .animal-incompatibility{
-        display: flex;
-        gap: 30px;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .animal-incompatibility .icon-container svg {
-        max-width: 60px;
-        max-height: 60px;
-    }
-
-    .animal-incompatibility .icon-container .icon-wrapper{
-        width: 20px;
-        height: 20px;
-        position: relative;
-        display: inline-block;
-
-        & svg {
-            position: absolute;
-            top: 0;
-            right: 0;
-            transform: translate(-25%, 50%);
-            width: 40px;
-            height: 40px;
-        }
-    }
-.back-navigation a svg {
-    width: 40px;
-    height: 40px;
-    fill: var(--primary-color);
-    transition: fill 0.3s ease;
-}
-
-</style>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // On récupère la grande image
-        const mainImage = document.querySelector('.animal-main-image .main-image');
-        // On récupère toutes les miniatures
-        const thumbnails = document.querySelectorAll('.animal-thumbnails .thumbnail');
-
-        thumbnails.forEach(function(thumbnail) {
-            thumbnail.addEventListener('click', function() {
-                // On stocke l'ancienne source de la grande image
-                const oldSrc = mainImage.src;
-                const oldAlt = mainImage.alt;
-
-                // On remplace la grande image par la miniature cliquée
-                mainImage.src = thumbnail.src;
-                mainImage.alt = thumbnail.alt;
-
-                // On affecte l’ancienne source à la miniature
-                thumbnail.src = oldSrc;
-                thumbnail.alt = oldAlt;
-            });
-        });
-    });
-</script>

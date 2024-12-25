@@ -10,24 +10,34 @@ $sex = get_post_meta(get_the_ID(), 'annonce_sexe_de_lanimal', true);
 // On propose de mettre une courte description dans le formulaire (par exemple : "chat siamois")
 // On la récupère ici
 $cardItems = get_field('annonce_card_items', get_the_ID());
-$shortDesc = get_field('annonce_ville', get_the_ID()) ?? $cardItems['annonce_courte_description'];
-$categoryId = get_field('annonce_categorie', get_the_ID());
-$category = get_term_by('id', $categoryId, 'categorie-danimal')->name;
-if(empty($shortDesc) || $shortDesc == '') :
-    // Sinon, on utilise la catégorie de l'annonce en courte description
-    $shortDesc = $category;
-endif;
 
 $ageField = get_field( 'annonce_age_de_lanimal', get_the_ID());
-$dateOfBirth = get_field('annonce_date_de_naissance', get_the_ID());
-$age = '';
-if (! empty($dateOfBirth)) {
-    $age = getAnimalAge(null, null, $dateOfBirth);
-}
-if (! $age) {
-    $age = getAnimalAge($ageField['annonce_age_nombre'], $ageField['annonce_age_unite']);
+$birthDate = get_field('annonce_date_de_naissance', get_the_ID());
+$longDate = '';
+$age ='';
+if(!empty($birthDate) && $birthDate !== '') {
+    $birthDateObject = DateTime::createFromFormat('m/Y', $birthDate);
+    $formatter = new IntlDateFormatter(
+        'fr_FR',
+        IntlDateFormatter::LONG,
+        IntlDateFormatter::NONE,
+    );
+    $formatter->setPattern('LLLL yyyy');
+
+    $longDate = $formatter->format($birthDateObject);
+
+    $longDate = ucfirst($longDate);
+    $age = getAnimalAge(null, null, $birthDate);
 }
 
+if ($age === ''){
+    $age = getAnimalAge($ageField['annonce_age_nombre'], $ageField['annonce_age_unite']);
+}
+$shortDesc = get_field('annonce_ville', get_the_ID());
+if(empty($shortDesc) || $shortDesc == '') :
+    // Sinon, on utilise la catégorie de l'annonce en courte description
+    $shortDesc = $cardItems['annonce_courte_description'];
+endif;
 
 $petInfo = $shortDesc . '<br>' . $age;
 

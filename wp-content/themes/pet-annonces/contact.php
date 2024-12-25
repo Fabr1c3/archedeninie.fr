@@ -49,25 +49,3 @@ if (get_field('la_page_a-t-elle_un_bouton_pour_acceder_aux_dons_')){
 get_footer();
 
 ?>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // On récupère la valeur de `subject` dans l'URL
-        const params = new URLSearchParams(window.location.search);
-        const subject = params.get('your-subject'); // ex. ?subject=test => "test"
-        console.log(subject);
-        // Si un paramètre 'subject' existe
-        if (subject) {
-            // Sélectionner le <select> (qui a la classe subject-select)
-            const selectEl = document.querySelector('select[name="your-subject"]');
-
-            if (selectEl) {
-                // On parcourt les options pour trouver celle qui a la même value
-                [...selectEl.options].forEach(option => {
-                    if (option.value === subject) {
-                        option.selected = true;
-                    }
-                });
-            }
-        }
-    });
-</script>
