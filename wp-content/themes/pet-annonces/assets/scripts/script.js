@@ -1,44 +1,98 @@
 
 // Filtre des actualités par catégorie
-jQuery(function(jQuery){
-    jQuery('#filter').submit(function(e){
-        e.preventDefault(); // Empêche la soumission standard du formulaire
-        let filter = jQuery(this);
-        jQuery.ajax({
-            url: filter.attr('action'),
-            data: filter.serialize(), // Utilise les données du formulaire
-            type: 'POST', // Méthode de la requête
-            beforeSend: function(xhr){
-                filter.find('button').html('<i class="fa-solid fa-circle"></i>'); // Optionnel: feedback visuel
-            },
-            success: function(data){
-                jQuery('#response').html(data); // Met à jour le contenu avec les données retournées
-                filter.find('button').html('<i class="fa-solid fa-check"></i>'); // Restaure le texte du bouton
+document.addEventListener('DOMContentLoaded', function() {
+    const filterForm = document.getElementById('filter');
+
+    if (filterForm) {
+        filterForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Empêche la soumission standard du formulaire
+
+            // Récupère l'URL d'action et les données du formulaire
+            const actionUrl = filterForm.getAttribute('action');
+            const formData = new FormData(filterForm);
+
+            // Sélectionne le bouton du formulaire
+            const submitButton = filterForm.querySelector('button');
+            // Optionnel : feedback visuel lors du "beforeSend"
+            if (submitButton) {
+                submitButton.innerHTML = '<i class="fa-solid fa-circle"></i>';
             }
+
+            // Envoie la requête AJAX en POST
+            fetch(actionUrl, {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.text()) // Suppose que la réponse est du HTML
+                .then(data => {
+                    // Met à jour la section #response avec les données retournées
+                    const responseContainer = document.getElementById('response');
+                    if (responseContainer) {
+                        responseContainer.innerHTML = data;
+                    }
+                    // Restaure le texte du bouton
+                    if (submitButton) {
+                        submitButton.innerHTML = '<i class="fa-solid fa-check"></i>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                    // En cas d'erreur, on peut éventuellement restaurer le texte du bouton
+                    if (submitButton) {
+                        submitButton.innerHTML = 'Réessayer';
+                    }
+                });
         });
-    });
+    }
 });
+
+
 
 // Filtre des annonces par catégorie d'animal
+document.addEventListener('DOMContentLoaded', function() {
+    const filterForm = document.getElementById('filter-form-annonces');
+    if (filterForm) {
+        filterForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Empêche la soumission standard du formulaire
 
-jQuery(function(jQuery){
-    jQuery('#filter-form-annonces').submit(function(e){
-        e.preventDefault(); // Empêche la soumission standard du formulaire
-        let filter = jQuery(this);
-        jQuery.ajax({
-            url: filter.attr('action'),
-            data: filter.serialize(), // Utilise les données du formulaire
-            type: 'POST', // Méthode de la requête
-            beforeSend: function(xhr){
-                filter.find('button').html('<i class="fa-solid fa-circle"></i>'); // Optionnel: feedback visuel
-            },
-            success: function(data){
-                jQuery('#response').html(data); // Met à jour le contenu avec les données retournées
-                filter.find('button').html('<i class="fa-solid fa-check"></i>'); // Restaure le texte du bouton
+            const actionUrl = filterForm.getAttribute('action');
+            const formData = new FormData(filterForm);
+
+            // Récupérer le bouton pour le feedback visuel
+            const submitButton = filterForm.querySelector('button');
+            if (submitButton) {
+                submitButton.innerHTML = '<i class="fa-solid fa-circle"></i>';
             }
+
+            // Requête en POST via fetch()
+            fetch(actionUrl, {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.text())
+                .then(data => {
+                    // Met à jour la zone #response avec les données retournées
+                    const responseContainer = document.getElementById('response');
+                    if (responseContainer) {
+                        responseContainer.innerHTML = data;
+                    }
+                    // Restaure le texte du bouton
+                    if (submitButton) {
+                        submitButton.innerHTML = '<i class="fa-solid fa-check"></i>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                    // En cas d'erreur, on peut restaurer ou changer l'affichage du bouton
+                    if (submitButton) {
+                        submitButton.innerHTML = 'Réessayer';
+                    }
+                });
         });
-    });
+    }
 });
+
+
 
 
 // Système pour ouvrir et fermer les cartes de la page soutenir
@@ -74,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 }
             }
-        }, 500
+        }, 2000
     )
 });
 
