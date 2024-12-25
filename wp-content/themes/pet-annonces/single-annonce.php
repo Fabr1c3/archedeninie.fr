@@ -120,7 +120,7 @@ $otherImages = get_field('autres_images');
                 <?php if ($longDate && $gender == 'Femelle') : ?>
                     <p><strong>Née en : </strong><?= $longDate ?></p>
                 <?php elseif ($longDate):; ?>
-                    <p><strong>Né en : </strong><?= $birthDate ?></p>
+                    <p><strong>Né en : </strong><?= $longDate ?></p>
                 <?php endif; ?>
 
                 <?php if ($age) : ?>
