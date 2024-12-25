@@ -270,6 +270,10 @@ function getAnimalAge($age = null, $unite = null, $birthDate = null) {
     $birthDateObject = DateTime::createFromFormat('m/Y', $birthDate);
 
     if ($birthDateObject === false) {
+        $birthDateObject = DateTime::createFromFormat('Ymd', $birthDate);
+    }
+
+    if ($birthDateObject === false) {
         return '';
     }
 
