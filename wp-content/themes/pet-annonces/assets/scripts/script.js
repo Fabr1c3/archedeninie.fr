@@ -59,24 +59,25 @@ for (let i = 0; i < participationCards.length; i++) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    const params = new URLSearchParams(window.location.search);
-    const subject = params.get('your-subject');
-    if (subject) {
-        const selectEl = document.querySelector('select[name="your-subject"]');
-
-        if (selectEl) {
-            [...selectEl.options].every(option => {
-                console.log(option.value);
-                if (option.value === subject) {
-                    console.log('Selected');
-                    option.selected = true;
-                    return false;
+    setTimeout(() => {
+            const params = new URLSearchParams(window.location.search);
+            const subject = params.get('your-subject');
+            if (subject) {
+                const selectEl = document.querySelector('select[name="your-subject"]');
+                if (selectEl) {
+                    [...selectEl.options].some(option => {
+                        if (option.value === subject) {
+                            option.selected = true;
+                            return true;
+                        }
+                        return false;
+                    });
                 }
-                return true;
-            });
-        }
-    }
+            }
+        }, 500
+    )
 });
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const mainImage = document.querySelector('.animal-main-image .main-image');
