@@ -125,26 +125,15 @@ for (let i = 0; i < participationCards.length; i++) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Sélectionne tous les formulaires CF7 (si tu en as plusieurs)
-    applySubjectSelection();
-    const forms = document.querySelectorAll('.wpcf7-form');
-console.log(forms);
+    applySubjectSelection();    const forms = document.querySelectorAll('.wpcf7-form');
     forms.forEach(form => {
         form.addEventListener('wpcf7reset', function(e) {
             console.log('wpcf7reset déclenché sur:', form);
             // Ici, ton code pour re-sélectionner l’option, etc.
             applySubjectSelection();
         });
-        form.addEventListener('wpcf7statuschanged', function(e) {
-            console.log('wpcf7statuschanged déclenché sur:', form);
-            // Ici, ton code pour re-sélectionner l’option, etc.
-            applySubjectSelection();
-        });
     });
 });
-
-
-// Exemple de fonction qui refait la sélection
 function applySubjectSelection() {
     const params = new URLSearchParams(window.location.search);
     const subject = params.get('your-subject');
