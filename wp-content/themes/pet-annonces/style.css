@@ -1033,6 +1033,35 @@ a.nav-link:hover {
     transition: fill 0.3s ease;
 }
 
+@media screen and (max-width: 768px) {
+    .back-navigation a svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .animal-incompatibility .icon-container .icon-wrapper{
+        width: 10px;
+        height: 10px;
+
+        & svg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translate(-25%, 50%);
+            width: 20px;
+            height: 20px;
+        }
+    }
+    .animal-incompatibility .icon-container svg {
+        max-width: 40px;
+        max-height: 40px;
+    }
+    .animal-incompatibility{
+        gap: 10px;
+    }
+}
+
+
 .container-temoignage {
     display: flex;
     justify-content: center;
